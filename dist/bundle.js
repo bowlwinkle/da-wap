@@ -20486,7 +20486,7 @@ module.exports = isNode;
 "use strict";
 
 
-module.exports = __webpack_require__.p + "859c2af00b33f0e3e5434ec79f0a13cc.js";
+module.exports = __webpack_require__.p + "SVGDOMPropertyConfig.js";
 
 /***/ }),
 /* 163 */
@@ -22205,13 +22205,13 @@ module.exports = function () {
 /* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "fb6fef0dc25034f84fcefe722e6f3d54.svg";
+module.exports = __webpack_require__.p + "badge-white.svg";
 
 /***/ }),
 /* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "a3b8b4f5b4923c33dba23ada6b8f7138.svg";
+module.exports = __webpack_require__.p + "antler-white.svg";
 
 /***/ }),
 /* 191 */
