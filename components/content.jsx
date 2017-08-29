@@ -5,7 +5,9 @@ import Splash from './splash.jsx';
 class Content extends Component {
     render() {
         return (
-            <Splash/>
+            <div className='content'>
+                <Splash/>
+            </div>
         );
     }
 }

@@ -5,7 +5,7 @@ import Footer from './footer.jsx';
 
 const Main = props => {
     return (
-        <div>
+        <div className='fillContent'>
             <Header/>
             <Content/>
         </div>
