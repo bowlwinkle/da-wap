@@ -10283,6 +10283,8 @@ var _main2 = _interopRequireDefault(_main);
 
 __webpack_require__(194);
 
+__webpack_require__(199);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_main2.default, null), document.getElementById('main'));
@@ -22883,6 +22885,12 @@ module.exports = function (css) {
 	// send back the fixed css
 	return fixedCss;
 };
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports) {
+
+module.exports = "assets/favicon.ico";
 
 /***/ })
 /******/ ]);
