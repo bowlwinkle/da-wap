@@ -4,4 +4,4 @@ import Main from './components/main.jsx';
 import './less/style.less';
 import './assets/favicon.ico';
 
-ReactDOM.render(<Main/>, document.getElementById('main'));
+ReactDOM.render(<Main/>, document.getElementById('root'));

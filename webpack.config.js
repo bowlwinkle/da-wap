@@ -1,19 +1,21 @@
-/*
-    ./webpack.config.js
-*/
 const path = require('path');
+
 module.exports = {
-    entry: '.',
+    entry: ['babel-polyfill', '.'],
     output: {
         path: path.resolve('dist'),
         filename: 'bundle.js'
     },
+    resolve: {
+        alias: {
+            Assets: path.resolve(__dirname, 'assets')
+        },
+        extensions: ['.js', '.jsx']
+    },
     module: {
         rules: [{
                 test: /\.jsx?/i,
-                use: [
-                    {loader: 'babel-loader'}
-                ]
+                loader: 'babel-loader'
             },
             {
                 test: /\.less$/,
@@ -34,7 +36,20 @@ module.exports = {
                         publicPath: 'assets/'
                     }
                 }]
+            }, {
+                test: /\.html/i,
+                loader: 'file-loader?name=./[name].[ext]'
             }
         ]
+    },
+    devtool: 'source-map',
+    devServer: {
+        port: 9081,
+        host: '0.0.0.0',
+        contentBase: path.join(__dirname),
+        compress: true, //GZIP compression
+        // hot: true, //Hot reload
+        // noInfo: true, //Don't show initial information
+        overlay: true //Show error overlay
     }
 }
