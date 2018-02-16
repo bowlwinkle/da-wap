@@ -1,166 +1,135 @@
-@import './header.less';
-@dark-bg: #454545;
+@import '../node_modules/font-awesome/less/font-awesome.less';
+@import './fonts.less';
+@import './home.less';
+@import './resume.less';
 
-.fillContent {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-}
+@dark-bg: black;
+@color: whitesmoke;
+@contentAnimationDelay: 3s;
 
 body {
     background-color: @dark-bg;
-
-    #main {
-        .fillContent;
-    }
-
-
-
-
 }
 
-.debugBorder {
-    // border: 1px solid red;
+.noSelect {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.topography {
-    height: 100vh;
-    width: 100vw;
-    text-align: center;
-    opacity: 0.03;
-}
+// .splashContainer {
+//     position: absolute;
+//     margin: auto;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     width: 100vh;
+//     height: 50vh;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
 
-.splashContainer {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vh;
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+// .splash {
+//     display: grid;
+//     display: -ms-grid;
+//     grid-template-areas:
+//     'antler-left badge antler-right';
+//     grid-template-columns: 1fr 1fr 1fr;
+//     grid-template-rows: auto;
+//     align-items: center;
+// }
 
-.splash {
-    display: grid;
-    display: -ms-grid;
-    grid-template-areas:
-    'antler-left badge antler-right';
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    align-items: center;
-}
+// .badge {
+//     grid-area: badge;
+//     img {
+//         display: flex;
+//         margin: auto;
+//         height: 20vh;
+//     }
+//     .debugBorder;
+// }
 
-.badge {
-    grid-area: badge;
-    img {
-        display: flex;
-        margin: auto;
-        height: 20vh;
-    }
-    .debugBorder;
-}
+// .antler-left {
+//     grid-area: antler-left;
+//     img {height: 30vh;}
+//     transform: rotateZ(-100deg);
+//     .debugBorder;
+// }
 
-.antler-left {
-    grid-area: antler-left;
-    img {height: 30vh;}
-    transform: rotateZ(-100deg);
-    .debugBorder;
-}
+// .antler-right {
+//     grid-area: antler-right;
+//     img {height: 30vh;}
+//     transform: rotateZ(-80deg) rotateX(180deg);
+//     .debugBorder;
+// }
 
-.antler-right {
-    grid-area: antler-right;
-    img {height: 30vh;}
-    transform: rotateZ(-80deg) rotateX(180deg);
-    .debugBorder;
-}
+// .splash-no-antlers {
+//     .antler-left {display: none;}
+//     .antler-right {display: none;}
+// }
 
-// .content {
-//     .fillContent
-//     background-color: #454545;
+// //Tiny screens
+// @media only screen
+// and (min-device-width : 40px)
+// and (max-device-width : 199px) {
+//     .splashContainer {bottom: initial;}
+//     .splash { img {height: 10vh}}
+//     .splash-no-antlers;
+// }
 
-//     .splash
+// @media only screen
+// and (min-device-width : 200px)
+// and (max-device-width : 320px) {
+//     .splashContainer {bottom: initial;}
+//     .splash { img {height: 15vh}}
+//     .splash-no-antlers;
+// }
+
+// /* Smartphones (portrait and landscape) ----------- */
+// @media only screen
+// and (min-device-width : 320px)
+// and (max-device-width : 480px) {
+//     .splash-no-antlers;
+// }
+
+// /* iPads (landscape) ----------- */
+// @media only screen
+// and (min-device-width : 768px)
+// and (max-device-width : 900px) {
 
 // }
 
-.splash-no-antlers {
-    .antler-left {display: none;}
-    .antler-right {display: none;}
-}
+// /* iPads (portrait and landscape) ----------- */
+// @media only screen
+// and (min-device-width : 901px)
+// and (max-device-width : 1024px) {
 
-//Tiny screens
-@media only screen
-and (min-device-width : 40px)
-and (max-device-width : 199px) {
-    .splashContainer {bottom: initial;}
-    .splash { img {height: 10vh}}
-    .splash-no-antlers;
-}
+// }
 
-@media only screen
-and (min-device-width : 200px)
-and (max-device-width : 320px) {
-    .splashContainer {bottom: initial;}
-    .splash { img {height: 15vh}}
-    .splash-no-antlers;
-}
+// /* iPads (landscape) ----------- */
+// @media only screen
+// and (min-device-width : 901px) {
 
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-    .splash-no-antlers;
-}
+// }
 
-/* iPads (landscape) ----------- */
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 900px) {
+// /* Desktops and laptops ----------- */
+// @media only screen
+// and (min-width : 1224px) {
 
-}
+// }
 
-/* iPads (portrait and landscape) ----------- */
-@media only screen
-and (min-device-width : 901px)
-and (max-device-width : 1024px) {
+// /* Large screens ----------- */
+// @media only screen
+// and (min-width : 1824px) {
 
-}
+// }
 
-/* iPads (landscape) ----------- */
-@media only screen
-and (min-device-width : 901px) {
+// /* iPhone 4 ----------- */
+// @media
+// only screen and (-webkit-min-device-pixel-ratio : 1.5),
+// only screen and (min-device-pixel-ratio : 1.5) {
 
-}
-
-/* Desktops and laptops ----------- */
-@media only screen
-and (min-width : 1224px) {
-
-}
-
-/* Large screens ----------- */
-@media only screen
-and (min-width : 1824px) {
-
-}
-
-/* iPhone 4 ----------- */
-@media
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
-
-}
-
-
-
-// footer {
-//     position: fixed;
-//     bottom: 0px;
-//     left: 0px;
-//     height: 50px;
-//     width: 100vw;
-//     background-color: lightgray;
 // }

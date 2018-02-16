@@ -26,16 +26,12 @@ module.exports = {
                 }, {
                     loader: 'less-loader' // compiles Less to CSS
                 }]
-            },
-            {
+            },  {
+                test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'file-loader?name=./assets/fonts/[hash].[ext]'
+            }, {
                 test: /\.png|.jpeg|.svg|.ico/i,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        publicPath: 'assets/'
-                    }
-                }]
+                loader: 'file-loader?name=./assets/[name].[ext]'
             }, {
                 test: /\.html/i,
                 loader: 'file-loader?name=./[name].[ext]'
@@ -50,6 +46,16 @@ module.exports = {
         compress: true, //GZIP compression
         // hot: true, //Hot reload
         // noInfo: true, //Don't show initial information
-        overlay: true //Show error overlay
+        overlay: true, //Show error overlay
+        historyApiFallback: {
+            rewrites: [
+                {from: /.index.html/, to: '/index.html'},
+                {from: /.bundle.js/, to: '/bundle.js'},
+                {from: /.+\/assets\/.+/, to: function(context) {
+                    let url = '/assets/' + context.parsedUrl.pathname.replace(/.+\/assets/, '');
+                    return url;
+                }}
+            ]
+        }
     }
 }
