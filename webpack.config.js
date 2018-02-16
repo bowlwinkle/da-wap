@@ -44,8 +44,6 @@ module.exports = {
         host: '0.0.0.0',
         contentBase: path.join(__dirname),
         compress: true, //GZIP compression
-        // hot: true, //Hot reload
-        // noInfo: true, //Don't show initial information
         overlay: true, //Show error overlay
         historyApiFallback: {
             rewrites: [

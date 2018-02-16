@@ -37,12 +37,12 @@
     "webpack-dev-server": "^2.6.1"
   },
   "dependencies": {
-    "animated": "^0.2.2",
+    "animate.css": "^3.6.1",
     "font-awesome": "^4.7.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-transition-group": "^2.2.1"
+    "react-transition-group": "1.x"
   }
 }
