@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: ['babel-polyfill', '.'],
     output: {
-        path: path.resolve('dist'),
+        path: path.resolve('docs'),
         filename: 'bundle.js'
     },
     resolve: {
@@ -27,7 +27,7 @@ module.exports = {
                     loader: 'less-loader' // compiles Less to CSS
                 }]
             },  {
-                test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|svg|woff|woff2|mp3)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader?name=./assets/fonts/[hash].[ext]'
             }, {
                 test: /\.png|.jpeg|.svg|.ico/i,

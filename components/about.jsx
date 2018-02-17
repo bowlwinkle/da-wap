@@ -1,6 +1,7 @@
 import React from 'react';
 import US from 'Assets/us-no-floor.png';
 import Fire from 'Assets/cut-out-fire.png';
+import FireAudio from 'Assets/fire-audio.mp3';
 
 class About extends React.Component {
     constructor(props) {
@@ -16,6 +17,16 @@ class About extends React.Component {
             const style =  {right: this.refs.fire.clientWidth - this.refs.us.clientWidth};
             this.setState({usStyle: style});
         }, 200);
+
+        var audio = new Audio(FireAudio);
+        audio.volume = 0.4;
+        audio.addEventListener('timeupdate', function(){
+            var buffer = 1;
+            if(this.currentTime > this.duration - buffer){
+                this.currentTime = 0
+                this.play()
+            }}, false);
+        audio.play();
     }
 
     render() {

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
-
 import Compass from './compass.jsx';
 import Links from './links.jsx';
 import About from './about.jsx';
