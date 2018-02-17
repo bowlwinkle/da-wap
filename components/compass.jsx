@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 const CompassMenu = (props) => {
     let iconStyle = {};
@@ -25,52 +26,91 @@ const CompassMenu = (props) => {
 };
 
 class Compass extends Component{
+    static Bearings = {
+        N: 'N',
+        S: 'S',
+        W: 'W',
+        E: 'E'
+    };
+
     constructor(props) {
         super(props);
 
+        this.needleSpinDelay = 3800; //Align with css animations
+        this.defaultNeedleRotation = 1113;
+
         this.state = {
             compass: null,
-            width: window.innerWidth,
-            height: window.innerHeight
+            bearing: 0,
+            needleCSS: ''
         };
-
-        this.resize = this.resize.bind(this);
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.resize);
+        setTimeout(() => {
+            this.setState({compass: (<circle id='compass' cx='150px' cy='150px' r='105px'/>)})
+        }, 100);
 
         setTimeout(() => {
-            this.setState({compass: (<circle id='compass' cx='50%' cy='45%' r='35%'/>)})
-        }, 100);
+            this.setState({bearing: this.defaultNeedleRotation, needleCSS: 'init-complete'});
+        }, this.needleSpinDelay)
     }
 
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.resize);
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.bearing !== this.props.bearing) {
+            this.bearing(nextProps.bearing);
+        }
     }
 
-    resize() {
-        this.setState({height: window.innerHeight, width: window.innerWidth});
+    bearing(incomingBearing) {
+        let bearing = 0;
+
+        switch(incomingBearing) {
+            case 'N':
+                bearing = this.defaultNeedleRotation - 33;
+                break;
+            case 'S':
+                bearing = this.defaultNeedleRotation - 223;
+                break;
+            case 'E':
+                bearing = this.defaultNeedleRotation + 422;
+                break;
+            case 'W':
+                bearing = this.defaultNeedleRotation - 478;
+                break;
+            default:
+                bearing = this.defaultNeedleRotation;
+        }
+
+        this.setState({bearing})
     }
 
     render() {
         return (
                  <div className='compass'>
-                    <svg width='300px' height='300px' viewBox={`0 0 300 300`} version='1.1' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'>
-                        {this.state.compass}
-                        <circle id='compassTicks' cx='50%' cy='45%' r='35%'/>
-                        <text x='143' y='10'>N</text>
-                        <text x='15' y='140'>W</text>
-                        <text x='145' y='270'>S</text>
-                        <text x='271' y='139'>E</text>
-                        <g id='needle'>
-                            <polygon points="146,140 150,50 154,140" style={{fill:'red'}} />
-                            <polygon points="146,138 150,50 154,138" style={{transform: 'rotateX(180deg) translateY(-85px) ', transformOrigin: 'center', fill:'whitesmoke'}} />
+                    <svg width='300px' height='300px' viewBox={`0 0 300 300`} version='1.1' xmlns='http://www.w3.org/2000/svg'>
+                        <g id='artboard'>
+                            {this.state.compass}
+                            <circle id='compassTicks' cx='150px' cy='150px' r='105px'/>
+                            <g id='text'>
+                                <text x='143' y='25'>N</text>
+                                <text x='145' y='285'>S</text>
+                                <text x='15' y='155'>W</text>
+                                <text x='271' y='154'>E</text>
+                            </g>
+                            <g id='needle' className={this.state.needleCSS} style={{transform: `rotate(${this.state.bearing}deg)`}}>
+                                <polygon id='red-needle' points="146,150 150,65 154,150"/>
+                                <polygon id='white-needle' points="146,150 150,235 154,150"/>
+                            </g>
                         </g>
                     </svg>
                  </div>
         );
     }
 }
+
+Compass.propTypes = {
+     bearing: PropTypes.string
+};
 
 export default Compass;

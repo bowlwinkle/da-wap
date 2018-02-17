@@ -1,4 +1,5 @@
 import React from 'react';
+import { Howl } from 'howler';
 import US from 'Assets/us-no-floor.png';
 import Fire from 'Assets/cut-out-fire.png';
 import FireAudio from 'Assets/fire-audio.mp3';
@@ -18,16 +19,21 @@ class About extends React.Component {
             this.setState({usStyle: style});
         }, 200);
 
-        var audio = new Audio(FireAudio);
-        audio.volume = 0.4;
-        audio.addEventListener('timeupdate', function(){
-            var buffer = 1;
-            if(this.currentTime > this.duration - buffer){
-                this.currentTime = 0
-                this.play()
-            }}, false);
-        audio.play();
+        this.audio = new Howl({
+            src: [FireAudio],
+            autoplay: true,
+            loop: true,
+            volume: 0.3,
+        });
+        this.audio.play();
     }
+
+    componentWillUnmount() {
+        if (this.audio) {
+            this.audio.stop();
+        }
+    }
+
 
     render() {
         return (

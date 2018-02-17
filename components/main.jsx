@@ -2,13 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
-import Compass from './compass.jsx';
-import Links from './links.jsx';
+import Home from './home.jsx';
+import Links, {SocialMediaLinks} from './links.jsx';
 import About from './about.jsx';
 import Footer from './footer.jsx';
 import Resume from './resume.jsx';
-import Topography from 'Assets/topography.png';
-import September from 'Assets/september-calls.png';
+
 
 // class Animation extends React.Component  {
 //     constructor(props) {
@@ -104,38 +103,6 @@ const DaRoute = ({component, ...rest}) => {
         )}/>
     );
 };
-
-const SocialMediaLinks = () => (
-    <div className='social-media'>
-        <a href='https://github.com/bowlwinkle'><i className="fa fa-github" aria-hidden="true"></i></a>
-        <a href='https://www.linkedin.com/in/lucas-gansberg-99381b33/'><i className="fa fa-linkedin-square" aria-hidden="true"></i></a>
-    </div>
-);
-
-class Home extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentWillAppear(cb) {
-        console.log('Home will appear');
-        cb();
-    }
-
-    render() {
-        return (
-            <div className='home'>
-                <img className='september-calls' src={September} alt='september'/>
-                <div className='bg-overlay'/>
-                <div className='home-animations'>
-                    <Compass/>
-                    <Links/>
-                    <SocialMediaLinks/>
-                </div>
-            </div>
-        );
-    }
-}
 
 const Projects = () => (
     <div className='projects'>
