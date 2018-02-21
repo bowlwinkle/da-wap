@@ -1,0 +1,163 @@
+@cube-color: #333333;
+@cube-size: 204px;
+@cube-animation-interval: 2s;
+@cube-animation-type: infinite;
+
+.cube-container {
+    .absoluteCenter;
+    position: fixed;
+    transform: rotateX(180deg) scale(0.6);
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+    margin: auto;
+
+    .cube {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transform: translateZ(-100px) rotateX(215deg) rotateY(45deg);
+        transition: transform @cube-animation-interval;
+
+        .side {
+            margin: 0;
+            width: @cube-size;
+            height: @cube-size;
+            display: block;
+            position: absolute;
+            border: 8px solid #154268;
+
+            .cross {
+                stroke: white;
+                height: 100%;
+                width: 100%;
+                stroke-width: 3px;
+                // stroke-dasharray: 100;
+                // animation: dash 5s linear @cube-animation-type;
+            }
+        }
+
+        .front  { transform: rotateY(0deg) translateZ(100px); }
+        .back   { transform: rotateX( 180deg ) translateZ( 100px ); }
+        .right  { transform: rotateY(  90deg ) translateZ( 100px ); }
+        .left   { transform: rotateY( -90deg ) translateZ( 100px ); }
+        .top    { transform: rotateX(  90deg ) translateZ( 100px ); }
+        .bottom { transform: rotateX( -90deg ) translateZ( 100px ); }
+    }
+
+    .cube.animate-front {
+        animation: spin-front @cube-animation-interval linear @cube-animation-type;
+        -webkit-animation: spin-front @cube-animation-interval linear @cube-animation-type;
+    }
+    .cube.animate-back {
+        animation: spin-back @cube-animation-interval linear @cube-animation-type;
+        -webkit-animation: spin-back @cube-animation-interval linear @cube-animation-type;
+    }
+    .cube.animate-left {
+        animation: spin-left @cube-animation-interval linear @cube-animation-type;
+        -webkit-animation: spin-left @cube-animation-interval linear @cube-animation-type;
+    }
+    .cube.animate-right {
+        animation: spin-right @cube-animation-interval linear @cube-animation-type;
+        -webkit-animation: spin-right @cube-animation-interval linear @cube-animation-type;
+    }
+    .cube.animate-top {
+        animation: spin-top @cube-animation-interval linear @cube-animation-type;
+        -webkit-animation: spin-top @cube-animation-interval linear @cube-animation-type;
+    }
+    .cube.animate-bottom {
+        animation: spin-bottom @cube-animation-interval linear @cube-animation-type;
+        -webkit-animation: spin-bottom @cube-animation-interval linear @cube-animation-type;
+    }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+
+@middle-front: translateZ(-100px) rotateX(144.75deg) rotateY(45deg);
+@middle-back: translateZ(-100px) rotateX(144.75deg) rotateY(225deg);
+
+@middle-left: translateZ(-100px) rotateX(215.25deg) rotateY(45deg);
+@middle-right: translateZ(-100px) rotateX(144.25deg) rotateY(-45deg); //This is the one that sucks
+
+@middle-top: translateZ(-100px) rotateX(144.75deg) rotateY(45deg);
+@middle-bottom: translateZ(-100px) rotateX(35.25deg) rotateY(45deg);
+
+//Keyframe animations
+@keyframes spin-front {
+  0% { transform:  @middle-back};
+  60% { transform: @middle-front };
+  100% { transform: @middle-front };
+}
+
+@-webkit-keyframes spin-front {
+  0% { transform: @middle-back };
+  60% { transform: @middle-front };
+  100% { transform: @middle-front };
+}
+
+@keyframes spin-back {
+  0% { transform: @middle-front };
+  60% { transform: @middle-back };
+  100% { transform: @middle-back };
+}
+
+@-webkit-keyframes spin-back {
+ 0% { transform: @middle-front };
+  60% { transform: @middle-back };
+  100% { transform: @middle-back };
+}
+
+// Left & Right
+@keyframes spin-left {
+  0% { transform:  @middle-back};
+  60% { transform: @middle-left };
+  100% { transform: @middle-left };
+}
+
+@-webkit-keyframes spin-left {
+  0% { transform: @middle-back };
+  60% { transform: @middle-left };
+  100% { transform: @middle-left };
+}
+
+@keyframes spin-right {
+  0% { transform: @middle-left };
+  60% { transform: @middle-right };
+  100% { transform: @middle-right };
+}
+
+@-webkit-keyframes spin-right {
+ 0% { transform: @middle-left };
+  60% { transform: @middle-right };
+  100% { transform: @middle-right };
+}
+
+//Top & Bottom
+@keyframes spin-top {
+  0% { transform:  @middle-right};
+  60% { transform: @middle-top };
+  100% { transform: @middle-top };
+}
+
+@-webkit-keyframes spin-top {
+  0% { transform: @middle-right };
+  60% { transform: @middle-top };
+  100% { transform: @middle-top };
+}
+
+@keyframes spin-bottom {
+  0% { transform: @middle-top };
+  60% { transform: @middle-bottom };
+  100% { transform: @middle-bottom };
+}
+
+@-webkit-keyframes spin-bottom {
+ 0% { transform: @middle-top };
+  60% { transform: @middle-bottom };
+  100% { transform: @middle-bottom };
+}
