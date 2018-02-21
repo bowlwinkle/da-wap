@@ -1,0 +1,54 @@
+/******Links*******/
+.social-media {
+    grid-area: social-media;
+    position: relative;
+    will-change: left;
+    transition: left 1s;
+
+    &.fade-in {
+        opacity: 0;
+        .animation(fadeIn 0.8s forwards @contentAnimationDelay;);
+    }
+
+    a {
+        text-decoration: none;
+        color: @color;
+        padding: 5px;
+    }
+}
+
+.links {
+    grid-area: links;
+    .noSelect;
+    font-family: @fontDefault;
+    list-style: none;
+    font-size: 2em;
+    width: 60vw;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+
+    &.fade-in {
+        opacity: 0;
+        .animation(fadeIn 0.8s forwards @contentAnimationDelay;);
+    }
+
+    li {
+        display: inline;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: @color;
+    }
+}
+
+.links-enter {
+    // position:
+}
+
+.links-leave {
+    left: -200%;
+}

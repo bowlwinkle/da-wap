@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "echo Need to add node.js server",
-    "dev": "webpack-dev-server --inline"
+    "dev": "webpack-dev-server --inline",
+    "build": "NODE_ENV=production && ASSET_PATH=/dist/assets && webpack"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "file-loader": "^0.11.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "redux-devtools": "^3.4.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
@@ -43,7 +45,9 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-transition-group": "1.x"
+    "react-transition-group": "1.x",
+    "redux": "^3.7.2"
   }
 }

@@ -87,15 +87,25 @@ class Compass extends Component{
 
     render() {
         return (
-                 <div className='compass'>
+                 <div className={`compass ${(this.props.animate) ? 'animate' : 'static'}`}>
                     <svg width='300px' height='300px' viewBox={`0 0 300 300`} version='1.1' xmlns='http://www.w3.org/2000/svg'>
                         <g id='artboard'>
                             {this.state.compass}
                             <circle id='compassTicks' cx='150px' cy='150px' r='105px'/>
                             <g id='text'>
-                                <text x='143' y='25'>N</text>
-                                <text x='145' y='285'>S</text>
-                                <text x='15' y='155'>W</text>
+                                <text x='143' y='25'>
+                                    {/* <tspan className='compass-link'>PROJECT</tspan> */}
+                                    N
+                                </text>
+                                <text x='145' y='285'>
+                                    {/* <tspan className='compass-link'>PROJECT</tspan> */}
+                                    S
+                                </text>
+                                <text x='15' y='155'>
+                                    W
+                                    {/* <tspan className='compass-link'>ORK</tspan> */}
+                                </text>
+                                {/* <text className='compass-link' x='271' y='154'>M</text> */}
                                 <text x='271' y='154'>E</text>
                             </g>
                             <g id='needle' className={this.state.needleCSS} style={{transform: `rotate(${this.state.bearing}deg)`}}>

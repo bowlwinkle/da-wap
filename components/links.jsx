@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const SocialMediaLinks = () => (
-    <div className='social-media'>
+export const SocialMediaLinks = (props) => (
+    <div className={`social-media ${props.className} ${(props.fadeIn) ? 'fade-in' : ''}`}>
         <a href='https://github.com/bowlwinkle'><i className="fa fa-github" aria-hidden="true"></i></a>
         <a href='https://www.linkedin.com/in/lucas-gansberg-99381b33/'><i className="fa fa-linkedin-square" aria-hidden="true"></i></a>
     </div>
@@ -25,7 +25,7 @@ class Links extends React.Component {
 
     render() {
         return (
-            <ul className='links'>
+            <ul className={`links ${this.props.className} ${(this.props.fadeIn) ? 'fade-in' : ''}`}>
                 <li onMouseOver={this.onHover.bind(window.event, 'home', true)} onMouseOut={this.onHover.bind(window.event, 'home', false)}>
                     <Link to="/">HOME</Link>
                 </li>
@@ -42,5 +42,9 @@ class Links extends React.Component {
         );
     }
 }
+
+Links.defaultProps = {
+    className: ''
+};
 
 export default Links;

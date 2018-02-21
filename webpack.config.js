@@ -1,14 +1,18 @@
 const path = require('path');
 
+const ASSET_PATH = process.env.ASSET_PATH || '/';
+
 module.exports = {
     entry: ['babel-polyfill', '.'],
     output: {
         path: path.resolve('dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: ASSET_PATH
     },
     resolve: {
         alias: {
-            Assets: path.resolve(__dirname, 'assets')
+            Assets: path.resolve(__dirname, 'assets'),
+            Redux: path.resolve(__dirname, 'redux')
         },
         extensions: ['.js', '.jsx']
     },

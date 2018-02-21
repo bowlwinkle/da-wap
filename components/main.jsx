@@ -2,12 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
-import Home from './home.jsx';
-import Links, {SocialMediaLinks} from './links.jsx';
-import About from './about.jsx';
-import Footer from './footer.jsx';
-import Resume from './resume.jsx';
+import { Provider } from 'react-redux';
 
+import Store from 'Redux/store';
+import {loaded} from 'Redux/actions';
+import Home from './home';
+import Links, {SocialMediaLinks} from './links';
+import About from './about';
+import Footer from './footer';
+import Resume from './resume';
 
 // class Animation extends React.Component  {
 //     constructor(props) {
@@ -104,6 +107,8 @@ const DaRoute = ({component, ...rest}) => {
     );
 };
 
+
+//Maybe a list of grid items for each project
 const Projects = () => (
     <div className='projects'>
     </div>
@@ -117,16 +122,25 @@ const CSSAnimation = props => (
     </CSSTransitionGroup>
 );
 
+const ANIMATION_TIME = 5 * 1000;
+
 const Main = props => {
+    //Dispatch the app loaded action after animation is finished
+    setTimeout(() => {
+        Store.dispatch(loaded(true));
+    }, ANIMATION_TIME);
+
     return (
-        <Router>
-            <div>
-                <DaRoute exact path='/' component={<Home/>}/>
-                <DaRoute path='/resume' component={<Resume/>}/>
-                <DaRoute path='/projects' component={<Projects/>}/>
-                <DaRoute path='/about' component={<About/>}/>
-            </div>
-        </Router>
+        <Provider store={Store}>
+            <Router>
+                <div>
+                    <DaRoute exact path='/' component={<Home/>}/>
+                    <DaRoute path='/resume' component={<Resume/>}/>
+                    <DaRoute path='/projects' component={<Projects/>}/>
+                    <DaRoute path='/about' component={<About/>}/>
+                </div>
+            </Router>
+        </Provider>
     );
 };
 

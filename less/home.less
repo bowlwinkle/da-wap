@@ -1,3 +1,5 @@
+@compassStrokeWidth: 12px;
+
 .home {
     height: 100vh;
     width: 100vw;
@@ -34,46 +36,19 @@
         width: 100vw;
         background-color: black;
         opacity: 0;
-        .animation(showBGOverlay 0.8s forwards @contentAnimationDelay;);
         z-index: -1;
     }
 }
 
-/******Links*******/
-.social-media {
-    grid-area: social-media;
-    opacity: 0;
-    .animation(fadeIn 0.8s forwards @contentAnimationDelay;);
-
-    a {
-        text-decoration: none;
-        color: @color;
-        padding: 5px;
+.home.animate {
+    .bg-overlay {
+        .animation(showBGOverlay 0.8s forwards @contentAnimationDelay;);
     }
 }
 
-.links {
-    grid-area: links;
-    .noSelect;
-    font-family: @fontDefault;
-    list-style: none;
-    font-size: 2em;
-    width: 60vw;
-    margin: auto;
-    padding: 0;
-    text-align: center;
-    opacity: 0;
-    .animation(fadeIn 0.8s forwards @contentAnimationDelay;);
-
-    li {
-        display: inline;
-        cursor: pointer;
-        padding: 10px;
-    }
-
-    a {
-        text-decoration: none;
-        color: @color;
+.home.static {
+    .bg-overlay {
+        opacity: 0.85;
     }
 }
 
@@ -100,53 +75,83 @@
             stroke: @color;
             fill: @color;
             opacity: 1;
+            // .animation(fadeIn 4.1s forwards;);
+        }
+    }
+
+    #compass {
+        transform-origin: center;
+        opacity: 0.85;
+    }
+
+    #compassTicks {
+        transform: rotate(15deg);
+        stroke-dashoffset: 27px;
+        transform-origin: center;
+        stroke: @color;
+    }
+
+    #needle {
+        transform-origin: center;
+
+        #red-needle { fill: red; }
+        #white-needle { fill: @color; }
+    }
+}
+
+.compass.static {
+    #compass {
+        opacity: 0;
+    }
+
+    #compassTicks {
+        stroke-width: @compassStrokeWidth;
+        stroke-dasharray: 2, ceil(@totalCompassLength / @compassTickCount);
+    }
+
+    #needle {
+        will-change: transform;
+        transition: transform 1s;
+        opacity: 0.65;
+    }
+}
+
+.compass.animate {
+    #compass {
+        stroke-dasharray: @totalCompassLength;
+        transform-origin: center;
+        transform: rotate(-90deg);
+        .animation(draw 2s forwards, fadeOut 0.8 forwards 3s;);
+    }
+
+    #compassTicks {
+        .animation(fadeIn 0.8s forwards 3s, compassStrokeWidth 0.8s forwards 3s, compassSetTicks 0.8s forwards 3.8s;);
+        stroke-width: 1; //Set to 12 after animation
+        stroke: @color;
+        opacity: 0;
+    }
+
+    #needle {
+        will-change: transform;
+        transition: transform 4s ease-out;
+        transform-origin: center;
+        opacity: 0;
+        &.init-complete {
+            transition: transform 1s;
+        }
+
+        .keyframes(needleFadeIn; {
+            0% { opacity: 0; }
+            100% { opacity: 0.65; }
+        });
+        .animation(needleFadeIn 0.8s forwards 3s);
+    }
+
+    svg {
+        text {
             .animation(fadeIn 4.1s forwards;);
         }
     }
-}
-
-#compass {
-    stroke-dasharray: @totalCompassLength;
-    transform-origin: center;
-    transform: rotate(-90deg);
-    .animation(draw 2s forwards, fadeOut 0.8 forwards 3s;);
-
-    // .keyframes(fadeCompass; {
-	// 	0% { opacity: 0; }
-	// 	100% { opacity: 0.05; }
-    // });
-
-    // .animation(draw 2s forwards, fadeCompass 0.8 forwards 3s;);
-}
-
-#compassTicks {
-    transform: rotate(15deg);
-    transform-origin: center;
-    .animation(fadeIn 0.8s forwards 3s, compassStrokeWidth 0.8s forwards 3s, compassSetTicks 0.8s forwards 3.8s;);
-    stroke-dashoffset: 27px;
-    stroke-width: 1; //Set to 12 after animation
-    stroke: @color;
-    opacity: 0;
-}
-
-#needle {
-    will-change: transform;
-    transition: transform 4s ease-out;
-    transform-origin: center;
-    opacity: 0;
-    &.init-complete {
-        transition: transform 1s;
-    }
-
-    #red-needle { fill: red; }
-    #white-needle { fill: @color; }
-
-    // .animation(fadeIn 0.8s forwards 3s, needleSpin 4s forwards 3.8s ease-out;);
-    .keyframes(needleFadeIn; {
-		0% { opacity: 0; }
-		100% { opacity: 0.65; }
-    });
-    .animation(needleFadeIn 0.8s forwards 3s);
 }
 
 .keyframes (@name; @frames) {
@@ -170,7 +175,7 @@
 
 @keyframes compassStrokeWidth {
     0% {stroke-width: 1px;}
-    100% {stroke-width: 12px;}
+    100% {stroke-width: @compassStrokeWidth;}
 }
 
 @keyframes compassSetTicks {
