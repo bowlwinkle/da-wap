@@ -31,8 +31,11 @@ module.exports = {
                     loader: 'less-loader' // compiles Less to CSS
                 }]
             },  {
-                test: /\.(ttf|eot|svg|woff|woff2|mp3)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader?name=./assets/fonts/[hash].[ext]'
+            },  {
+                test: /\.(mp3)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'file-loader?name=./assets/[name].[ext]'
             }, {
                 test: /\.png|.jpeg|.svg|.ico/i,
                 loader: 'file-loader?name=./assets/[name].[ext]'
