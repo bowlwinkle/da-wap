@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import Store from 'Redux/store';
 import {loaded} from 'Redux/actions';
 import Home from './home';
+import Projects from './projects';
 import Links, {SocialMediaLinks} from './links';
 import About from './about';
 import Footer from './footer';
@@ -106,13 +107,6 @@ const DaRoute = ({component, ...rest}) => {
         )}/>
     );
 };
-
-
-//Maybe a list of grid items for each project
-const Projects = () => (
-    <div className='projects'>
-    </div>
-);
 
 const CSSAnimation = props => (
     <CSSTransitionGroup transitionName={props.name}

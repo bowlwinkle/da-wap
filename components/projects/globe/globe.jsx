@@ -4,8 +4,8 @@ import * as THREE from 'three';
 import WorldMesh from 'Assets/negative-map-small-opac.png';
 // var {MeshLine, MeshLineMaterial} = require( 'three.meshline' );
 // var OrbitControls = require('three-orbit-controls')(THREE);
-// import VertexShader from '../glsl/vertex-shader.glsl';
-// import FragmentShader from '../glsl/fragment-shader.glsl';
+// import VertexShader from '../vertex-shader.glsl';
+// import FragmentShader from '../fragment-shader.glsl';
 
 class Globe extends Component {
     constructor(props) {

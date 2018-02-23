@@ -1,0 +1,42 @@
+@mapBGColor: whitesmoke;
+
+.us-map {
+    background-color: @mapBGColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    #LegendBoxes {
+        rect {
+            cursor: pointer;
+            stroke: @mapBGColor;
+            stroke-width: 1;
+
+            &:hover {
+                fill: #260d04;
+            }
+        }
+    }
+
+    #Text {
+        text {
+            pointer-events: none;
+        }
+    }
+}
+
+#United-States {
+    path, polygon {
+        cursor: pointer;
+        fill: #D8D8D8;
+        stroke: @mapBGColor;
+
+        &:hover {
+            fill: #260d04;
+        }
+    }
+}
