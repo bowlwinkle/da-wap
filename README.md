@@ -1,14 +1,5 @@
-<div style="width: 100vw;display: grid;grid-template-areas: &quot;arrow-head-left antler arrow-head-right&quot;; text-align: center;">
-        <div style="grid-area: arrow-head-left">
-        <img style="height: 15vh; display: inline-block;" src="https://raw.githubusercontent.com/bowlwinkle/da-wap/master/assets/pure-black-arrowhead.png" alt="Arrow Head">
-        </div>
-        <div style="grid-area: antler">
-        <img style="height: 20vh; display: inline-block;" src="https://github.com/bowlwinkle/da-wap/blob/master/assets/antler-pure-black.png?raw=true" alt="Arrow Head">
-        </div>
-        <div style="grid-area: arrow-head-right">
-        <img style="height: 15vh; display: inline-block;" src="https://raw.githubusercontent.com/bowlwinkle/da-wap/master/assets/pure-black-arrowhead.png" alt="Arrow Head">
-        </div>
-    </div>
+<img style='max-width=30% !important; width: 30% !important; filter: hue-rotate(90deg) !important;' src='./client/assets/steepdeep.png' alt='steepNdeep'/>
+
 
 # Da Wap aka Steep n Deep
 All POC and WIP.
