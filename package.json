@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "echo Need to add node.js server",
     "dev": "webpack-dev-server --inline",
-    "build": "NODE_ENV=production && ASSET_PATH=/dist/assets && webpack"
+    "build-client": "NODE_ENV=production && ASSET_PATH=/dist/client/ ./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
