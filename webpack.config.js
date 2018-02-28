@@ -1,5 +1,5 @@
 const path = require('path');
-
+const port = 9081;
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 console.log(`Asset Path: ${ASSET_PATH}`);
 
@@ -48,7 +48,7 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-        port: 9081,
+        port,
         host: '0.0.0.0',
         contentBase: path.join(__dirname),
         compress: true, //GZIP compression
@@ -57,8 +57,10 @@ module.exports = {
             rewrites: [
                 {from: /.index.html/, to: '/index.html'},
                 {from: /.bundle.js/, to: '/bundle.js'},
-                {from: /.+\/assets\/.+/, to: function(context) {
-                    let url = '/assets/' + context.parsedUrl.pathname.replace(/.+\/assets/, '');
+                {from: /.assets\/.+/, to: function(context) {
+                    console.log(context);
+                    let url = context.parsedUrl.pathname.replace(/.+\/assets/, 'client/assets');
+                    return 'fuckyou';
                     return url;
                 }}
             ]
