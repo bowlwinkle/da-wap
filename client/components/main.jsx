@@ -14,6 +14,7 @@ import Footer from './footer';
 import Resume from './resume';
 
 import Map from './projects/SteepNDeep/map';
+import KMLMap from './projects/SteepNDeep/kml-map';
 
 // class Animation extends React.Component  {
 //     constructor(props) {
@@ -135,6 +136,7 @@ const Main = props => {
                     <DaRoute path='/projects' component={<Projects/>}/>
                     <DaRoute path='/about' component={<About/>}/>
                     <DaRoute path='/idaho' component={<Map/>}/>
+                    <DaRoute path='/idaho-kml' component={<KMLMap/>}/>
                 </div>
             </Router>
         </Provider>
