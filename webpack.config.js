@@ -1,18 +1,19 @@
 const path = require('path');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
+console.log(`Asset Path: ${ASSET_PATH}`);
 
 module.exports = {
     entry: ['babel-polyfill', '.'],
     output: {
-        path: path.resolve('dist'),
+        path: path.resolve('dist/client'),
         filename: 'bundle.js',
         publicPath: ASSET_PATH
     },
     resolve: {
         alias: {
-            Assets: path.resolve(__dirname, 'assets'),
-            Redux: path.resolve(__dirname, 'redux')
+            Assets: path.resolve(__dirname, 'client/assets'),
+            Redux: path.resolve(__dirname, 'client/redux')
         },
         extensions: ['.js', '.jsx']
     },
@@ -32,16 +33,16 @@ module.exports = {
                 }]
             },  {
                 test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: 'file-loader?name=./assets/fonts/[hash].[ext]'
+                loader: 'file-loader?name=/assets/fonts/[hash].[ext]'
             },  {
                 test: /\.(mp3)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: 'file-loader?name=./assets/[name].[ext]'
+                loader: 'file-loader?name=/assets/[name].[ext]'
             }, {
                 test: /\.png|.jpeg|.svg|.ico/i,
-                loader: 'file-loader?name=./assets/[name].[ext]'
+                loader: 'file-loader?name=/assets/[name].[ext]'
             }, {
                 test: /\.html/i,
-                loader: 'file-loader?name=./[name].[ext]'
+                loader: 'file-loader?name=/[name].[ext]'
             }
         ]
     },

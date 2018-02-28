@@ -13,6 +13,8 @@ import About from './about';
 import Footer from './footer';
 import Resume from './resume';
 
+import Map from './projects/SteepNDeep/map';
+
 // class Animation extends React.Component  {
 //     constructor(props) {
 //         super(props);
@@ -132,6 +134,7 @@ const Main = props => {
                     <DaRoute path='/resume' component={<Resume/>}/>
                     <DaRoute path='/projects' component={<Projects/>}/>
                     <DaRoute path='/about' component={<About/>}/>
+                    <DaRoute path='/idaho' component={<Map/>}/>
                 </div>
             </Router>
         </Provider>
