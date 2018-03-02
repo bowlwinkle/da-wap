@@ -53,7 +53,168 @@ class KMLMap extends Component {
         this.map = new window.google.maps.Map(this.map, {
             zoom: 2,
             center: {lat: -33.865427, lng: 151.196123},
-            mapTypeId: 'terrain'
+            mapTypeId: 'terrain',
+            styles: [
+                {
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#242f3e"
+                    }
+                  ]
+                },
+                {
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#746855"
+                    }
+                  ]
+                },
+                {
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#242f3e"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative.locality",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#d59563"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#d59563"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#263c3f"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#6b9a76"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#38414e"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road",
+                  "elementType": "geometry.stroke",
+                  "stylers": [
+                    {
+                      "color": "#212a37"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#9ca5b3"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#746855"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "geometry.stroke",
+                  "stylers": [
+                    {
+                      "color": "#1f2835"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#f3d19c"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "transit",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#2f3948"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "transit.station",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#d59563"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "water",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#17263c"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "water",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#515c6d"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "water",
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#17263c"
+                    }
+                  ]
+                }
+              ]
         });
 
         var ctaLayer = new google.maps.KmlLayer({
@@ -68,15 +229,15 @@ class KMLMap extends Component {
 
         // This example uses a local copy of the GeoJSON stored at
         // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
+        // script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+        // document.getElementsByTagName('head')[0].appendChild(script);
 
-        this.map.data.setStyle((feature) => {
-            var magnitude = feature.getProperty('mag');
-            return {
-                icon: this.getCircle(magnitude)
-            };
-        });
+        // this.map.data.setStyle((feature) => {
+        //     var magnitude = feature.getProperty('mag');
+        //     return {
+        //         icon: this.getCircle(magnitude)
+        //     };
+        // });
     }
 
     getCircle(magnitude) {
@@ -96,7 +257,7 @@ class KMLMap extends Component {
 
     render() {
         return (
-            <div ref={(container) => { this.mapContainer = container; }} style={{height: '100vh', width: '100vw'}}>
+            <div ref={(container) => { this.mapContainer = container; }} style={{height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0}}>
                 {this.state.googleMap}
                 <div ref={(map) => { this.map = map; }} style={{height: '100vh', width: '100vw'}}>
 

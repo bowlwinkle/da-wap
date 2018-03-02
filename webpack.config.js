@@ -50,9 +50,11 @@ module.exports = {
     devServer: {
         port,
         host: '0.0.0.0',
+        // public: 'http://lggansbe-mac01.jf.intel.com:9081',
         contentBase: path.join(__dirname),
         compress: true, //GZIP compression
         overlay: true, //Show error overlay
+        disableHostCheck: true,
         historyApiFallback: {
             rewrites: [
                 {from: /.index.html/, to: '/index.html'},
